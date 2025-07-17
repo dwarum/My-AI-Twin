@@ -6,6 +6,7 @@ import re
 
 pushover_url = "https://api.pushover.net/1/messages.json"
 EMAIL_REGEX = r"\b[\w.-]+?@\w+?\.\w+?\b"
+LINKEDIN_URL = os.getenv("LINKEDIN_URL")
 
 @function_tool
 def record_email(text:str):
@@ -37,16 +38,14 @@ def validate_email(text: str) -> bool:
         return re.search(EMAIL_REGEX, email) is not None
     return False
 
+# This guardrail checks if the email has already been recorded in the current session.
+# If it has, it prevents the agent from recording it again.
+# Added session logic here because the email may be submitted mid-conversation and not only as initial input.
+# Although input_guardrail is designed to run before the agent's execution, this app restarts the agent on each message, so guardrail runs each time.
 @input_guardrail
 async def guardrail_against_spam_email(ctx, agent, message):
-    """
-    This guardrail checks if the email has already been recorded in the current session.
-    If it has, it prevents the agent from recording it again.
-    """
-    
     session = ctx.context.get("session")
     if session and session.email_recorded:
-        print(f"email {session.email_recorded}")
         if re.search(EMAIL_REGEX, message):
             return GuardrailFunctionOutput(
                 output_info={"reason": (
@@ -57,7 +56,6 @@ async def guardrail_against_spam_email(ctx, agent, message):
                 tripwire_triggered=True
             )
     elif session and not session.email_recorded:
-        print(f"email {session.email_recorded}")
         if re.search(EMAIL_REGEX, message):
             session.email_recorded = True
 
@@ -69,15 +67,12 @@ class Me:
     def __init__(self) -> None:
         self.name = "Ramya Rajaram"
         self.email_recorded = False
-        reader = PdfReader("uploads/linkedin.pdf")
-        self.linkedin = ""
+        reader = PdfReader("uploads/resume.pdf")
+        self.resumetext = ""
         for page in reader.pages:
             text = page.extract_text()
             if text:
-                self.linkedin += text
-        with open("uploads/summary.txt", "r", encoding="utf-8") as f:
-            self.summary = f.read()
-
+                self.resumetext += text
 
     def system_prompt(self):
             system_prompt = f"""You are acting as {self.name}. You are answering questions on {self.name}'s website, \
@@ -91,8 +86,10 @@ class Me:
             If the email address is invalid, politely inform the user and ask them to provide a valid email address. \
             if the user provides a valid email address, use your 'record_email' tool to record the email address. \
             After recording the email, give an appropriate response. \
+            If the user asks for your name, you can respond with your name, but do not share any personal information like phone number or address. \
+            If the user asks for your email address, do not share it, but instead provide them your {LINKEDIN_URL} and ask them to contact you there. \
             """
-            system_prompt += f"\n\n## Summary:\n{self.summary}\n\n## LinkedIn Profile:\n{self.linkedin}\n\n"
+            system_prompt += f"\n\n## LinkedIn Profile:\n{self.resumetext}\n\n"
             system_prompt += f"With this context, please chat with the user, always staying in character as {self.name}"
             
             return system_prompt
@@ -105,7 +102,7 @@ class Me:
             with trace("conversational portfolio"):
                 result = await Runner.run(agent,message,context={"session": self})
                 return result.final_output
-        except InputGuardrailTripwireTriggered as e:
+        except InputGuardrailTripwireTriggered as e: #to prevent tool invocation but also continue the conversation without ending it
             return f"{e.guardrail_result.output.output_info.get('reason', 'No reason provided') }"
 
  

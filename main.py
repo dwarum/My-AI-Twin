@@ -11,4 +11,12 @@ load_dotenv(override=True)
 
 if __name__ == "__main__":
     me = Me()
-    gr.ChatInterface(me.chat,type="messages").launch()
+    with gr.Blocks(theme=gr.themes.Soft()) as demo:
+        gr.Markdown("""
+                    ## 👋 Hi, I'm Ramya Rajaram's AI Twin
+                    I'm here to answer your questions about my career, background, skills, and projects.
+                    Feel free to chat with me — this helps both of us save time before a formal interview!
+                    """)
+        chat = gr.ChatInterface(me.chat, type="messages",head="Ramya Rajaram's AI Twin - Conversational Portfolio Assistant")
+    demo.launch()
+    
