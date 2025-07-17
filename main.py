@@ -1,5 +1,8 @@
+from agents import OpenAIChatCompletionsModel, Agent, Runner, trace
 from dotenv import load_dotenv
 import gradio as gr
+from openai import AsyncOpenAI
+import os
 
 #from noagent import Me
 from openaiagent import Me
