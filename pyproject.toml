@@ -5,7 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "gradio>=5.35.0",
+    "gradio[cli]>=5.35.0",
     "openai-agents>=0.1.0",
     "pypdf>=5.7.0",
 ]
