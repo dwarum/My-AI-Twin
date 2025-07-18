@@ -7,7 +7,6 @@ The goal is to **save time** for both sides: the employer gets quick clarity abo
 
 Built with **Gradio**, it provides a smooth web interface that mimics a professional assistant powered by AI.
 
-Visit the site https://huggingface.co/spaces/rrajaram/My-Professional-AI-Twin
 ---
 
 ## 🚀 Key Features
