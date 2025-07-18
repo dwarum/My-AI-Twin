@@ -73,6 +73,8 @@ class Me:
             text = page.extract_text()
             if text:
                 self.resumetext += text
+        with open("uploads/summary.txt", "r") as f:
+            self.summary = f.read()
 
     def system_prompt(self):
             system_prompt = f"""You are acting as {self.name}. You are answering questions on {self.name}'s website, \
@@ -85,11 +87,12 @@ class Me:
             If the user is engaging in discussion, try to steer them towards getting in touch via email; validate the email using your 'validate_email' tool. \
             If the email address is invalid, politely inform the user and ask them to provide a valid email address. \
             if the user provides a valid email address, use your 'record_email' tool to record the email address. \
-            After recording the email, give an appropriate response. \
+            After recording the email, let the user know that you have recorded their email and that you will be contacting them shortly for further discussion. 
+            Keep continuing the chat \
             If the user asks for your name, you can respond with your name, but do not share any personal information like phone number or address. \
             If the user asks for your email address, do not share it, but instead provide them your {LINKEDIN_URL} and ask them to contact you there. \
             """
-            system_prompt += f"\n\n## LinkedIn Profile:\n{self.resumetext}\n\n"
+            system_prompt += f"\n\n## Summary:\n{self.summary}\n\n## LinkedIn Profile:\n{self.resumetext}\n\n"
             system_prompt += f"With this context, please chat with the user, always staying in character as {self.name}"
             
             return system_prompt

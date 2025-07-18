@@ -12,7 +12,7 @@ Built with **Gradio**, it provides a smooth web interface that mimics a professi
 ## 🚀 Key Features
 
 ### 🤖 AI-Powered Chatbot (OpenAI SDK)
-- Answers user questions using a system prompt seeded with my **Resume (PDF)**.
+- Answers user questions using a system prompt seeded with my **Resume (PDF)** and custom **summary**.
 - Uses `gpt-4o-mini` for cost-effective, high-quality responses.
 
 ### 💼 Career-focused
@@ -89,7 +89,7 @@ The app includes a **Gradio-based UI** for real-time chat:
 Python 3.8+
 OpenAI API key
 Pushover account (for notifications)
-LinkedIn profile PDF export
+Resume PDF export
 Personal summary text file
 
 ---
@@ -128,10 +128,11 @@ digital-twin-chatbot/
 ├── main.py              # Main application entry point
 ├── openaiagent.py       # Core chatbot logic and agent configuration
 ├── uploads/
-│   ├── resume.pdf     # Your resume export
+│   ├── resume.pdf       # Your resume export
+│   ├── summary.txt      # Your handwritten summary
 ├── .env                 # Environment variables (not in repo)
 ├── requirements.txt     # Python dependencies
-└── README.md           # This file
+└── README.md            # This file
 
 ---
 
