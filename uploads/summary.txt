@@ -1,3 +1,20 @@
-I am based out of the US and currently live in India. I travel between USA and India for work. 
-Holding US Citizenship and Overseas Citizen of India status, I am authorized to work both in the US and India without visa sponsorship.
-I prefer remote work but if needed I can travel to work place on short term basis.
+### PROFESSIONAL STANDING & ELIGIBILITY
+I am a Senior AI Architect and Engineering Leader with over 20 years of experience in US Fortune 50 and Federal sectors (JPMorgan Chase, Nelnet, Mayo Clinic). 
+
+- **Citizenship & Mobility:** I am a US Citizen and hold Overseas Citizen of India (OCI) status. I am fully authorized to work in both the United States and India without any visa sponsorship. 
+- **Operations:** I maintain a dual presence in both the USA and India, providing a strategic bridge for global engineering teams.
+
+### ENGAGEMENT MODEL
+I am currently accepting new opportunities for **Strategic AI Consulting, Enterprise Modernization Advisory, and Fractional Technical Leadership.**
+
+- **Work Preference:** I specialize in high-impact remote consulting. 
+- **Availability:** I am available for remote engagements across US and IST time zones. I am open to short-term domestic or international travel for key project milestones, architectural audits, or stakeholder strategy sessions.
+
+### CORE CONSULTING SPECIALTIES
+1. **Agentic Workflows:** Moving organizations from simple RAG to autonomous multi-agent systems (CrewAI).
+2. **Enterprise Scale:** Modernizing legacy systems for high-concurrency and global deployment.
+3. **Regulated Tech:** Implementing AI and Cloud solutions within strict HIPAA, Fintech, and Federal compliance frameworks.
+4. **Engineering Excellence:** Leading Waterfall-to-Agile transformations and optimizing CI/CD pipelines (achieving up to 85% deployment efficiency).
+
+### CALL TO ACTION
+For partnership inquiries, architectural audits, or consulting rates, please request my contact information or email address through this chat interface.

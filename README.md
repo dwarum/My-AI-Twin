@@ -1,3 +1,9 @@
+---
+title: my_professional_ai_twin
+app_file: main.py
+sdk: gradio
+sdk_version: 5.38.0
+---
 # 🧠 My AI Twin — Conversational Portfolio Assistant
 [🟢 **Live Demo on Hugging Face**](https://huggingface.co/spaces/rrajaram/My-Professional-AI-Twin)
 

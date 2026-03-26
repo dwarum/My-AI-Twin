@@ -4,13 +4,14 @@ import gradio as gr
 from openai import AsyncOpenAI
 import os
 
-#from noagent import Me
+# from noagent import Me
 from openaiagent import Me
 
 load_dotenv(override=True)
 
 if __name__ == "__main__":
     me = Me()
+    # gr.ChatInterface(me.chat,type="messages").launch()
     with gr.Blocks(theme=gr.themes.Soft()) as chat:
         gr.Markdown("""
                     ## 👋 Hi, I'm Ramya Rajaram's AI Twin
